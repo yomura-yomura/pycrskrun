@@ -1,26 +1,13 @@
 import numpy as np
+import niche_lib
+
 
 def niche_to_crsk(x, y):
     return y, -x
 
-import sys, os
-# _dirpath = os.path.dirname(os.path.abspath(__file__))
-# sys.path.append(os.path.join(_dirpath, "../../../../pyniche-lib"))
-import niche_lib
-
 
 def get_array():
     array = niche_lib.niche_detector_array.load_location_data(with_hole_radius=True, origin="center of array", unit="cm")
-
-#    array.position.x -= array.position.x.mean()
-#    array.position.y -= array.position.y.mean()
-#     array.position.x -= (array.position.x.max() + array.position.x.min())/2
-#     array.position.y -= (array.position.y.max() + array.position.y.min())/2
-
-    # array.position.x *= 100 # [cm]
-    # array.position.y *= 100 # [cm]
-    # array.position.z *= 100 # [cm]
-
     array.position.x, array.position.y = niche_to_crsk(array.position.x, array.position.y)
     return array
 

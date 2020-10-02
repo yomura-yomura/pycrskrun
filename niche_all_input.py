@@ -80,8 +80,8 @@ niche_input_fields = append(
     [
         ("NICHE_COREPOS", dtype("d, d"), 2, math.floor(999/len(lib_niche_array_for_crsk.telescope()))),
         
-        ]
-    )
+    ]
+)
 
 from data.detector import crsk_wl_options as cwo
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-import sys
-from simu.corsika.iact import niche_eventio
+from pycrskrun import niche_all_input, particle_type
+
 # Remove isotopes, Switch keys and values
-particle_type_table = {v: k for k, v in niche_eventio.particle_type.table.items() if "isotope" not in v}
+particle_type_table = {v: k for k, v in particle_type.table.items() if "isotope" not in v}
 
 version = 2  # will change seeds, starts from 1
 
@@ -47,8 +47,6 @@ n_det_x = n_det_y = 4
 spacing_x = (array.position.x.max() - array.position.x.min()) / (n_det_x - 1)
 spacing_y = (array.position.y.max() - array.position.y.min()) / (n_det_y - 1)
 
-
-from simu.corsika.pycrskrun import niche_all_input
 f = niche_all_input.niche_all_input()
 
 
