@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from distutils.core import setup
+from setuptools import find_packages, setup
 
 setup(
     name='pycrskrun',
@@ -9,8 +9,5 @@ setup(
     author='yomura',
     author_email='yomura@hoge.jp',
     url='https://github.com/yomura-yomura/pycrskrun',
-    packages=[
-        'distutils', 'distutils.command',
-        "numpy", "pandas", 
-    ],
+    packages=find_packages()
 )
