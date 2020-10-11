@@ -40,7 +40,7 @@ class all_input:
             try:
                 self.append_line(line)
             except EOFError:
-                self.n_line -= 1
+                # self.n_line -= 1
                 break
 
     def _validate_keyword(self, keyword, args):
@@ -92,7 +92,7 @@ class all_input:
         ):
             self.comment_lines[self.n_line] = line
             self.n_line += 1
-            return
+            return None
 
         import re
         matched = re.match("(\S+)\s*(.*)", line)
