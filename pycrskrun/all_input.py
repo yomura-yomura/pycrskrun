@@ -29,7 +29,7 @@ class all_input:
             args_list = self.input_array[self.input_array["keyword"] == keyword]
             if self.input_fields[self.input_fields.keyword == keyword][0].limit < len(args_list):
                 warnings.warn(
-                    "{} duplicate keywords '{}' defined ({} keyword(s) at most) ".format(
+                    "{} duplicate keywords '{}' defined ({} keyword(s) at most by default) ".format(
                         len(args_list), keyword, self.input_fields[self.input_fields.keyword == keyword][0].limit
                     ),
                     RuntimeWarning)

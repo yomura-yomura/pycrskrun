@@ -66,8 +66,10 @@ y_data = []
 
 # for i_y in reversed(range(-1, n_det_y + 1 + 1)):
 #     for i_x in range(-1, n_det_x + 1 + 1):
-for i_y in reversed(range(-2, n_det_y + 2)):
-    for i_x in range(-2, n_det_x + 2):
+# for i_y in reversed(range(-2, n_det_y + 2)):
+#     for i_x in range(-2, n_det_x + 2):
+for i_y in reversed(range(-3, n_det_y + 3)):
+    for i_x in range(-3, n_det_x + 3):
         x = array.position.x.min() + i_x * spacing_x
         y = array.position.y.min() + i_y * spacing_y
 

@@ -1,9 +1,13 @@
+#!/usr/bin/env python3
 import sys
 import pycrskrun.all_input
 import pandas as pd
 import plotly.express as px
+import plotly
+plotly.io.renderers.default = "browser"
 
-sys.argv += ("/Users/yomura/p15-16_mc_x100",)
+
+sys.argv += ("p_1e15-1e16_mc8x8_x100_v2",)
 fn = sys.argv[1]
 
 ai = pycrskrun.all_input.all_input(fn)
@@ -16,14 +20,17 @@ telescopes["numbers"] = [str(i) for i in range(len(telescopes) // 14) for _ in r
 telescopes["x"] /= 100
 telescopes["y"] /= 100
 
+telescopes[["x", "y"]] = telescopes[["y", "x"]]
+telescopes["x"] *= -1
+
 axes_layout = dict(
     xaxis=dict(
-        title="X",
+        title="X (to East)",
         ticksuffix=" m",
         dtick=100
     ),
     yaxis=dict(
-        title="Y",
+        title="Y (to North)",
         ticksuffix=" m",
         dtick=100
     )
