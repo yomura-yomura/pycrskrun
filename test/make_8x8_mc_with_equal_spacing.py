@@ -90,7 +90,7 @@ f.append("TELFIL", (f"data/no_thin/iact/{fn}.dat",))
 all_input = f.get_extracted()
 
 print(f"save as {fn}")
-all_input.save(fn)
+all_input._save(fn)
 
 if False:
     data = [
