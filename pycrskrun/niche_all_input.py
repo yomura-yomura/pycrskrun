@@ -86,6 +86,7 @@ niche_input_fields = append(
 from data.detector import crsk_wl_options as cwo
 
 default_all_input = '''
+* TEMPLATE starts
 MAGNET  21.76  45.80                     magnetic field centr. TALE Site.
 ECUTS   0.3  0.3  0.001  0.001         energy cuts for particles: hadrons, muons, electrons, photons (GeV)
 LONGI   T  1.  T  F                   longit.distr. & step size & fit & out
@@ -99,6 +100,8 @@ CERQEF  T   T   F                       enabled atmospheric absorption on 2019-1
 
 PAROUT  F  F
 CERFIL  0
+
+* TEMPLATE ends
 '''.format("\n".join(cwo.get_option_lines()))
 
 
