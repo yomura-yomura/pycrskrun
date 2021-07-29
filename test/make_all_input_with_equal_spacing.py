@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 from pycrskrun import niche_all_input, particle_type
+import sys
+import niche_lib
 
-# Remove isotopes, Switch keys and values
-particle_type_table = {v: k for k, v in particle_type.table.items() if "isotope" not in v}
 
+particle_type_table_without_isotopes = {
+    k: v for k, v in particle_type.particle_type_table.items() if "isotope" not in k
+}
 
 i_start_seed = 20
 particle_type = "p"
@@ -21,13 +24,10 @@ max_energy = 10e16
 n_shower = 100
 
 
-if particle_type not in particle_type_table:
+if particle_type not in particle_type_table_without_isotopes:
     print("Available particle types:")
-    print(", ".join(particle_type_table.keys()))
+    print(", ".join(particle_type_table_without_isotopes.keys()))
     sys.exit(1)
-
-
-
 
 
 fn = "{particle}_{emin}-{emax}_x{nshow}".format(
@@ -37,10 +37,6 @@ fn = "{particle}_{emin}-{emax}_x{nshow}".format(
     nshow=n_shower
 )
 
-
-
-
-import niche_lib
 array = niche_lib.niche_detector_array.load_location_data()
 array.position.x -= (array.position.x.max() + array.position.x.min()) / 2
 array.position.y -= (array.position.y.max() + array.position.y.min()) / 2
@@ -69,7 +65,7 @@ def set_seeds(i=1):
 
 
 set_seeds(i_start_seed)
-    
+
 x_data = []
 y_data = []
 
@@ -82,7 +78,7 @@ for i_y in reversed(range(-n, n_det_y + n)):
         y = array.position.y.min() + i_y * spacing_y
 
         f.append("NICHE_COREPOS", (x, y))
-        
+
         x_data.append(x)
         y_data.append(y)
 
@@ -90,7 +86,7 @@ xscatt = spacing_x / 2
 yscatt = spacing_y / 2
 
 f.append("NSHOW", (n_shower,))
-f.append("PRMPAR", (particle_type_table[particle_type],))
+f.append("PRMPAR", (particle_type_table_without_isotopes[particle_type],))
 f.append("ERANGE", (min_energy/1e9, max_energy/1e9))
 f.append("PHIP", (0, 360))
 f.append("THETAP", (min_zenith, max_zenith))
