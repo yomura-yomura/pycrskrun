@@ -104,7 +104,7 @@ if False:
     import plotly.express as px
     import numpy as np
     import numpy_utility as npu
-    plotly.io.renderers.default = "browser"
+    
 
     x_reused = (x_data + array.position.x[:, np.newaxis]).flatten()
     y_reused = (y_data + array.position.y[:, np.newaxis]).flatten()

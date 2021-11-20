@@ -4,7 +4,7 @@ import pycrskrun.all_input
 import pandas as pd
 import plotly.express as px
 import plotly
-plotly.io.renderers.default = "browser"
+
 
 
 def main(fn, auto_open=True):
